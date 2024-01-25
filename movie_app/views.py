@@ -53,7 +53,7 @@ def movie_detail_api_view(request, id):
         movie.title = request.data.get('title')
         movie.description = request.data.get('description')
         movie.duration = request.data.get('duration')
-        movie.director = request.data.get('director')
+        movie.director_id = request.data.get('director_id')
         movie.year_of_release = request.data.get('year_of_release')
         movie.save()
         return Response(data={'movie_id': movie.id}, status=status.HTTP_201_CREATED)
@@ -92,7 +92,7 @@ def reviews_detail_api_view(request, id):
         return Response(status=status.HTTP_204_NO_CONTENT)
     elif request.method == 'PUT':
         review.text = request.data.get('text')
-        review.movie = request.data.get('movie')
+        review.movie_id = request.data.get('movie_id')
         review.start = request.data.get('stars')
         return Response(data={'review_id': review.id}, status=status.HTTP_201_CREATED)
 
