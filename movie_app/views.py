@@ -93,7 +93,8 @@ def reviews_detail_api_view(request, id):
     elif request.method == 'PUT':
         review.text = request.data.get('text')
         review.movie_id = request.data.get('movie_id')
-        review.start = request.data.get('stars')
+        review.stars = request.data.get('stars')
+        review.save()
         return Response(data={'review_id': review.id}, status=status.HTTP_201_CREATED)
 
 
