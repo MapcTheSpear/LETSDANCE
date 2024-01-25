@@ -12,7 +12,7 @@ class DirectorSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = 'id text movie_name stars_total'.split()
 
 
 class MovieSerializer(serializers.ModelSerializer):

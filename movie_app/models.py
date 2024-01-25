@@ -38,12 +38,15 @@ class Movie(models.Model):
     def avg_rating(self):
         summ = 0
         count = 0
-        for i in self.reviews.all():
-            summ += i.stars
-            count += 1
+        try:
+            for i in self.reviews.all():
+                summ += i.stars
+                count += 1
 
-        average = summ / count
-        return average
+            average = summ / count
+            return average
+        except ZeroDivisionError:
+            return 'There is no rating yet!'
 
 
 STARS_SELECT = (
@@ -63,4 +66,12 @@ class Review(models.Model):
 
     def __str__(self):
         return f'{self.movie} + {self.stars}★'
+
+    @property
+    def movie_name(self):
+        return f'{self.movie.title}'
+
+    @property
+    def stars_total(self):
+        return self.stars * '★'
 # Create your models here.
