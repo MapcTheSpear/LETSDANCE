@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views
+from .constants import LIST_CREATE, ITEM
 
 urlpatterns = [
-    path('directors/', views.directors_api_view),
-    path('directors/<int:id>/', views.director_detail_api_view),
-    path('movie/', views.movie_api_view),
-    path('movie/<int:id>/', views.movie_detail_api_view),
-    path('reviews/', views.reviews_api_view),
-    path('reviews/<int:id>/', views.reviews_detail_api_view),
+    path('directors/', views.DirectorListCreateAPIView.as_view()),
+    path('directors/<int:id>/', views.DirectorDetailAPIView.as_view()),
+    path('movie/', views.MovieListCreateAPIView.as_view()),
+    path('movie/<int:id>/', views.MovieDetailAPIView.as_view()),
+    path('reviews/', views.ReviewListCreateAPIView.as_view()),
+    path('reviews/<int:id>/', views.ReviewDetailAPIView.as_view()),
 ]
